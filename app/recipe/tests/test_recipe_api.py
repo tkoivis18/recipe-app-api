@@ -17,7 +17,7 @@ from core.models import (
 
 from recipe.serializers import (
     RecipeSerializer,
-    RecipeDetailSerializer
+    RecipeDetailSerializer,
 )
 
 RECIPES_URL = reverse('recipe:recipe-list')
@@ -50,7 +50,7 @@ class PublicRecipeAPITests(TestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
-        self.cleint = APIClient()
+        self.client = APIClient()
 
     def test_auth_required(self):
         """Test auth is required to call API."""
@@ -199,7 +199,7 @@ class PrivateRecipeApiTests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
-            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}]
+            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -265,7 +265,7 @@ class PrivateRecipeApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn(tag_lunch, recipe.tags.all())
-        self.assertNotIn(tag_breakfast, recipe.tag.all())
+        self.assertNotIn(tag_breakfast, recipe.tags.all())
 
     def test_clear_recipe_tags(self):
         """Test clearing a recipes tags."""
@@ -279,4 +279,4 @@ class PrivateRecipeApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(res.tag.count(), 0)
+        self.assertEqual(recipe.tags.count(), 0)
