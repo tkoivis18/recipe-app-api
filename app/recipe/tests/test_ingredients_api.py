@@ -27,7 +27,7 @@ def create_user(email='user@example.com', password='testpass123'):
 
 
 
-class PublicIngredientApiTests(TestCase):
+class PublicIngredientsApiTests(TestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
@@ -61,7 +61,7 @@ class PrivateIngredientsApiTests(TestCase):
 
     def test_ingredients_limited_to_user(self):
         """Test list of ingredients is limited to authenticated user."""
-        user2 = create_user(email='email2@example.com')
+        user2 = create_user(email='user2@example.com')
         Ingredient.objects.create(user=user2, name='Salt')
         ingredient = Ingredient.objects.create(user=self.user, name='Pepper')
 
