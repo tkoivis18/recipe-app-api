@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import (
     Recipe,
     Tag,
-    Ingredient
+    Ingredient,
 )
 from recipe import serializers
 
