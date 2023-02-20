@@ -119,7 +119,7 @@ class PrivateIngredientsApiTests(TestCase):
         self.assertIn(s1.data, res.data)
         self.assertNotIn(s2.data, res.data)
 
-    def test_filtered_ingredients_uniqu(self):
+    def test_filtered_ingredients_unique(self):
         """Test filtered ingredients return a unique list."""
         ing = Ingredient.objects.create(user=self.user, name='Eggs')
         Ingredient.objects.create(user=self.user, name='Lentils')
