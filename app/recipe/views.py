@@ -33,7 +33,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Return the serializer class for request."""
         if self.action == 'list':
             return serializers.RecipeSerializer
-        elif self.action == 'uploaf_image':
+        elif self.action == 'upload_image':
             return serializers.RecipeImageSerializer
 
         return self.serializer_class
