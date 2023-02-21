@@ -22,7 +22,7 @@ def recipe_image_file_path(instance, filename):
 
 
 class UserManager(BaseUserManager):
-    """Manage for users."""
+    """Manager for users."""
 
     def create_user(self, email, password=None, **extra_fields):
         """Create, save and return a new user."""
